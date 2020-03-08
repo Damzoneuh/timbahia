@@ -3,5 +3,8 @@
 {% block title %}{{ parent() }} Index{% endblock %}
 
 {% block body %}
+    <div id="index">
 
+    </div>
 {% endblock %}
+{% block javascripts %}{{ parent() }} {{ encore_entry_script_tags('index') }}{% endblock %}
