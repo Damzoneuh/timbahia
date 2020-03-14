@@ -19,7 +19,7 @@ export default class AssocSwitch extends Component{
                 <div className="row align-items-stretch">
                     {assocs.map(a => {
                         return (
-                            <div className="col mt-5 mb-5">
+                            <div className="col mt-5 mb-5" key={a.id}>
                                 <div className="text-white text-center bg-footer p-5 rounded shadow h-100 ">
                                     <div className="d-flex justify-content-between align-items-center mt-2 mb-2">
                                         <div><img src={a.city === 'Lyon' ? logoLyon : logoAnnecy } alt="logo" className="w-logo-details mt-2"/></div>
@@ -43,9 +43,9 @@ export default class AssocSwitch extends Component{
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {a.hours.map(h => {
+                                        {a.hours.map((h,key) => {
                                             return (
-                                                <tr>
+                                                <tr key={key}>
                                                     <td>{h.day}</td>
                                                     <td>{h.start}</td>
                                                     <td>{h.end}</td>
