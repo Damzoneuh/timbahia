@@ -80,7 +80,7 @@ export default class Footer extends Component{
         const {isLoaded, links, forms, tab, logType, log} = this.state;
         if (isLoaded && links){
             return(
-                <footer className="bg-footer">
+                <footer className="bg-footer" id="contact-us">
                     {log && logType ? <Logger message={log} type={logType}/> : ''}
                     <div className="container-fluid">
                         <div className="row">

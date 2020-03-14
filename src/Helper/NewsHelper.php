@@ -12,7 +12,7 @@ trait NewsHelper
         return [
             'title' => $new->getTitle(),
             'text' => $new->getText(),
-            'img' => $new->getImg() ? $new->getImg() : null,
+            'img' => $new->getImg() ? $new->getImg()->getId() : null,
             'id' => $new->getId()
         ];
     }
