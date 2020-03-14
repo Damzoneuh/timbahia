@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Logger from "../logger/Logger";
+import fb from '../../../img/fb.png';
 export default class Footer extends Component{
     constructor(props) {
         super(props);
@@ -82,16 +83,23 @@ export default class Footer extends Component{
                 <footer className="bg-footer">
                     {log && logType ? <Logger message={log} type={logType}/> : ''}
                     <div className="container-fluid">
-                        <div className="row align-items-center">
+                        <div className="row">
                             <div className="col-sm-12 col-md-6">
-                                <ul className="nav flex-column">
-                                    {links.left.map(l => {
-                                        return(
-                                            <li key={l.id} className="nav-item"><a href={l.path} className="text-white nav-link" title={l.name}>{l.name}</a> </li>
-                                        )
-                                    })}
-                                </ul>
+                                <div className="p-5">
+                                    <ul className="nav flex-column shadow mb-5">
+                                        {links.left.map(l => {
+                                            return(
+                                                <li key={l.id} className="nav-item"><a href={l.path} className="text-white nav-link" title={l.name}>{l.name}</a> </li>
+                                            )
+                                        })}
+                                    </ul>
+                                    <a href="https://www.facebook.com/100pour100BAHIA/"
+                                       title="facebook 100% bahia" className="d-flex justify-content-between align-items-center text-white shadow p-2" target="_blank">
+                                        <img src={fb} alt="facebook" className="w-logo"/> Lyon
+                                    </a>
+                                </div>
                             </div>
+
                             <div className="col-sm-12 col-md-6">
                                 <div className="p-5">
                                     <ul className="nav nav-tabs">

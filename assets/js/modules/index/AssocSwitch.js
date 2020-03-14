@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logoLyon from '../../../img/logo.jpg';
+import logoLyon from '../../../img/logo-lyon.png';
 import logoAnnecy from '../../../img/vamosvadiar.jpg';
 
 export default class AssocSwitch extends Component{
