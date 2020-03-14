@@ -93,10 +93,18 @@ export default class Footer extends Component{
                                             )
                                         })}
                                     </ul>
-                                    <a href="https://www.facebook.com/100pour100BAHIA/"
-                                       title="facebook 100% bahia" className="d-flex justify-content-between align-items-center text-white shadow p-2" target="_blank">
-                                        <img src={fb} alt="facebook" className="w-logo"/> Lyon
-                                    </a>
+                                    <div>
+                                        <a href="https://www.facebook.com/100pour100BAHIA/"
+                                           title="facebook 100% bahia" className="d-flex justify-content-between align-items-center text-white shadow p-2" target="_blank">
+                                            <img src={fb} alt="facebook" className="w-logo"/> Lyon
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="https://www.facebook.com/CapoeiraAnnecyVamosVadiar/"
+                                           title="facebook 100% bahia" className="d-flex justify-content-between align-items-center text-white shadow p-2" target="_blank">
+                                            <img src={fb} alt="facebook" className="w-logo"/> Annecy
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 

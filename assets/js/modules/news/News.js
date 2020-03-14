@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Loader from "../../common/loader/Loader";
 import Logger from "../../common/logger/Logger";
+import NewsSelected from "./NewsSelected";
 
 export default class News extends Component{
     constructor(props) {
@@ -58,14 +59,19 @@ export default class News extends Component{
     }
 
     render() {
-        const {isLoaded, message, news, type} = this.state;
+        const {isLoaded, message, news, type, selected} = this.state;
         if (!isLoaded){
             return <Loader/>
+        }
+        if (selected){
+            return(
+                <NewsSelected id={selected} handleBack={() => this.handleBack()}/>
+            )
         }
         else {
             return (
                 <div className="container-fluid mt-5">
-                    <div className="row">
+                    <div className="row align-items-stretch">
                         <div className="col-12">
                             {message && type ? <Logger message={message} type={type}/> : ''}
                         </div>
@@ -78,7 +84,7 @@ export default class News extends Component{
                                             <h3 className="font-weight-bold text-center">{n.title.toUpperCase()}</h3>
                                         </div>
                                         <div className="text-center mt-5">
-                                            <button className="btn btn-group btn-outline-light" >Voir plus</button>
+                                            <button className="btn btn-group btn-outline-light" onClick={() => this.handleViewMore(n.id)}>Voir plus</button>
                                         </div>
                                     </div>
                                 </div>
