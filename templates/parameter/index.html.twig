@@ -6,7 +6,7 @@
     {{ parent() }}
     <div class="container-fluid mt-5">
         <div class="row mt-5 mb-5">
-            <div class="col-sm-12 col-md-6 offset-md-3 mt-4">
+            <div class="col-md-12 col-lg-6 {{ is_granted('ROLE_SUB') ? '' : ' offset-lg-3 '}} mt-4">
                 <div class="shadow bg-footer p-5 rounded ">
                     <h1 class="text-center text-white">Paramètres</h1>
                     <div class="mt-3">
@@ -16,6 +16,53 @@
                     </div>
                 </div>
             </div>
+            {% if is_granted('ROLE_SUB') %}
+                <div class="col-md-12 col-lg-6 mt-4">
+                    <div class="shadow bg-footer p-5 rounded ">
+                        <h1 class="text-center text-white">Espace Inscrit</h1>
+                        <div class="mt-3 text-center">
+                            <a href="" class="btn btn-group btn-outline-light">Voir les vidéos</a> {#TODO mettre le bon lien #}
+                        </div>
+                        {% if is_granted('ROLE_PRESTA') %}
+                        <div class="mt-3 text-center">
+                            <table class="table table-striped text-white table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Prestation </th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Inscription</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if prestations|length > 0 %}
+                                        {% for prestation in prestations %}
+                                            {% set isSub = false %}
+                                            <tr>
+                                                <th scope="row">{{ prestation.title }}</th>
+                                                <td>{{ prestation.date|date('d/m/Y H:i') }}</td>
+                                                <td>
+                                                    {% if prestation.user|length > 0 %}
+                                                        {% for user in prestation.user.values %}
+                                                            {% if user.id == app.user.id %}
+                                                               {% set isSub = true %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                    <a href="{{ isSub ? path('sub_unsub_event', {id: prestation.id}) : path('sub_event', {id: prestation.id}) }}"
+                                                       class="{{ isSub ? 'btn btn-group btn-outline-danger' : 'btn btn-group btn-success' }}">
+                                                        {{ isSub ? 'Se désinscrire' : 'S\'inscrire' }}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

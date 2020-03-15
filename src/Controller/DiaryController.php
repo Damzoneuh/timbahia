@@ -33,7 +33,7 @@ class DiaryController extends AbstractController
             throw new NotFoundHttpException();
         }
         $data = [];
-        $diaries = $this->getDoctrine()->getRepository(Diary::class)->findAll();
+        $diaries = $this->getDoctrine()->getRepository(Diary::class)->findBy(['isPublished' => true]);
         if (count($diaries) > 0){
             foreach ($diaries as $diary){
                 array_push($data, $this->createDiaryArray($diary));

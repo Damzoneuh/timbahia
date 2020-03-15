@@ -41,5 +41,5 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/sa, roles: ROLE_SUPER_ADMIN }
-         - { path: ^/sub, roles: ROLE_SUBSCRIBER }
+         - { path: ^/sub, roles: ROLE_SUB }
          - { path: ^/show, roles: ROLE_PRESTA }

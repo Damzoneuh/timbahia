@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Diary;
 use App\Entity\Instrument;
 use App\Entity\Profile;
 use App\Entity\User;
@@ -27,6 +28,7 @@ class ParameterController extends AbstractController
     {
         /** @var User $user */
         $user = $this->getUser();
+        $prestations = $this->getDoctrine()->getRepository(Diary::class)->findAll();
         $form = $this->createFormBuilder()
             ->add('name', TextType::class, [
                 'label' => 'Prénom',
@@ -94,6 +96,6 @@ class ParameterController extends AbstractController
             $this->addFlash('success', 'Votre compte à bien été mis à jour');
             return $this->redirectToRoute('parameter');
         }
-        return $this->render('parameter/index.html.twig', ['form' => $form->createView()]);
+        return $this->render('parameter/index.html.twig', ['form' => $form->createView(), 'prestations' => $prestations]);
     }
 }
