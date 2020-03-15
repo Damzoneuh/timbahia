@@ -5,11 +5,7 @@ import logoAnnecy from '../../../img/vamosvadiar.jpg';
 export default class AssocSwitch extends Component{
     constructor(props) {
         super(props);
-        this.handleJoin = this.handleJoin.bind(this);
-    }
 
-    handleJoin(e){
-        window.location.href = '/assoc/' + e.target.value;
     }
 
     render() {
@@ -55,7 +51,7 @@ export default class AssocSwitch extends Component{
                                         </tbody>
                                     </table>
                                     <div className="text-center">
-                                        <button className="btn btn-group btn-outline-light" value={a.id} onClick={this.handleJoin}>Nous rejoindre</button>
+                                        <a className="btn btn-group btn-outline-light" href="#contact-us" >Nous rejoindre</a>
                                     </div>
                                 </div>
                             </div>

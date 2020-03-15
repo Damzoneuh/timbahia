@@ -78,7 +78,7 @@ export default class Diary extends Component{
                         </div>
                         {diaries && diaries.length > 0 ? diaries.map(d => {
                             return(
-                                <div className="col-md-6 col-12">
+                                <div className="col-md-6 col-12" key={d.id}>
                                     <div className="p-5 mt-5 mb-5 bg-footer rounded shadow">
                                         {d.img ?
                                             <div className="row align-items center">

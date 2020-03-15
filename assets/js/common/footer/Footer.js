@@ -101,7 +101,7 @@ export default class Footer extends Component{
                                     </div>
                                     <div>
                                         <a href="https://www.facebook.com/CapoeiraAnnecyVamosVadiar/"
-                                           title="facebook 100% bahia" className="d-flex justify-content-between align-items-center text-white shadow p-2" target="_blank">
+                                           title="facebook 100% bahia" className="d-flex justify-content-between align-items-center text-white shadow p-2 mt-5" target="_blank">
                                             <img src={fb} alt="facebook" className="w-logo"/> Annecy
                                         </a>
                                     </div>
