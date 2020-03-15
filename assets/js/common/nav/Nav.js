@@ -51,9 +51,13 @@ export default class Nav extends Component{
                     </div>
                     <div className="collapse navbar-collapse justify-content-end" id="navbarToggler">
                         <ul className="navbar-nav mt-2 mt-lg-0 ">
-                            <li className="nav-item">
-                                <a className="nav-link text-success link" title="paramètres" href="/parameter"><FontAwesomeIcon icon="cogs" /></a>
-                            </li>
+                            {el.dataset.connected ?
+                                <li className="nav-item">
+                                    <a className="nav-link text-success link" title="paramètres"
+                                       href="/parameter"><FontAwesomeIcon icon="cogs"/></a>
+                                </li>
+                                 : ''
+                            }
                             {links.right.map(l => {
                                 if (el.dataset.connected && l.path === '/logout'){
                                     return (
