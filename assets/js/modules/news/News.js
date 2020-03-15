@@ -80,7 +80,7 @@ export default class News extends Component{
                                 <div className="col-md-6 col-sm-12 mt-5 mb-5" key={n.id}>
                                     <div className="bg-footer p-5 rounded text-white">
                                         <div className="d-flex justify-content-between align-items-center p-5">
-                                            {n.img ? <img src={'/img/render/' + n.id} alt={n.title} /> : '' }
+                                            {n.img ? <img src={'/img/render/' + n.img} alt={n.title} className="w-thumb"/> : '' }
                                             <h3 className="font-weight-bold text-center">{n.title.toUpperCase()}</h3>
                                         </div>
                                         <div className="text-center mt-5">

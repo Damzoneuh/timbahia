@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Admin-Agenda{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-5">
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center mt-5"><a href="{{ path('admin') }}" class="btn btn-group btn-primary">Retout à l'admin</a> </div>
+            <div class="col mt-5">
+                <div class="p-5 bg-footer shadow rounded text-white">
+                    <h4 class="text-center text-white">Création Agenda</h4>
+                    {{ form_start(form) }}
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}

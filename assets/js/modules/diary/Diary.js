@@ -83,7 +83,7 @@ export default class Diary extends Component{
                                         {d.img ?
                                             <div className="row align-items center">
                                                 <div className="col-md-6 col-12">
-                                                    <img src={'/img/render/' + d.img} alt={d.title}/>
+                                                    <img src={'/img/render/' + d.img} alt={d.title} className="w-thumb"/>
                                                 </div>
                                                 <div className="col-md-6 col-12">
                                                     <h3 className="text-white text-center">{d.title}</h3>

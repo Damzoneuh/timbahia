@@ -63,7 +63,7 @@ export default class DiarySelected extends Component{
                                     {diary.img ?
                                         <div className="row text-white">
                                             <div className="col-md-6 col-12">
-                                                <img src={'/img/render/' + diary.img} alt={diary.title}/>
+                                                <img src={'/img/render/' + diary.img} alt={diary.title} className="w-thumb"/>
                                             </div>
                                             <div className="col-md-6 col-12">
                                                 <h4 className="text-center">
@@ -74,6 +74,9 @@ export default class DiarySelected extends Component{
                                                 <div className="text-center">
                                                     {diary.date}
                                                 </div>
+                                            </div>
+                                            <div className="mt-5">
+                                                {diary.text}
                                             </div>
                                         </div>
                                         :

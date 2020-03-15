@@ -22,7 +22,7 @@ export default class Footer extends Component{
     }
 
     componentDidMount(){
-        axios.get('api/nav/link')
+        axios.get('/api/nav/link')
             .then(res => {
                 this.setState({
                     links: res.data

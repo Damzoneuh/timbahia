@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Admin-Actus{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-5">
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center mt-5"><a href="{{ path('admin') }}" class="btn btn-group btn-primary">Retour à l'admin</a> </div>
+            <div class="col-12 mt-5 ">
+                <div class="p-5 bg-footer shadow rounded text-white mb-5">
+                    <h4 class="text-center">Edition Actus</h4>
+                    <table class="table table-responsive-sm table-striped text-white text-center" >
+                        <thead>
+                        <tr>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% if news|length > 0 %}
+                                {% for new in news %}
+                                    <tr>
+                                        <td><a href="{{ path('admin_news', {id: new.id}) }}" class="text-white">{{ new.title }}</a> </td>
+                                        <td><a href="{{ path('admin_delete_news', {id: new.id}) }}" class="btn btn-group btn-danger">Supprimer</a> </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}

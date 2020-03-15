@@ -18,7 +18,7 @@ export default class Nav extends Component{
     }
 
     componentDidMount() {
-        axios.get('api/nav/link')
+        axios.get('/api/nav/link')
             .then(res => {
                 this.setState({
                     isLoaded: true,

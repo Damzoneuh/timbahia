@@ -69,9 +69,11 @@ export default class NewsSelected extends Component{
                                        <button className="btn btn-group btn-outline-light mb-5" onClick={() => this.handleBack()}>Retour</button>
                                    </div>
                                    {news.img ?
-                                       <div className="col-md-6 col-sm-12">
-                                           <img src={'/api/img/render/' + news.img} alt={news.title} />
-                                           <h3 className="text-white">{news.title.toUpperCase()}</h3>
+                                       <div className="col-12">
+                                           <div className="d-flex justify-content-between align-items-center">
+                                               <img src={'/img/render/' + news.img} alt={news.title} className="w-thumb"/>
+                                               <h3 className="text-white">{news.title.toUpperCase()}</h3>
+                                           </div>
                                        </div>
                                            :
                                        <div className="col-12">
