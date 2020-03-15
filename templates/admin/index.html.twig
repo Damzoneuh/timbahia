@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Admin{% endblock %}
+
+{% block body %}
+   <div class="container-fluid mt-5">
+       <div class="row mt-5">
+           <div class="col mt-5 mb-5">
+               <div class="row ">
+                   <div class="col">
+{#                       TODO mettre les liens #}
+                       <div class="d-flex bg-footer flex-column align-items-center rounded shadow p-5">
+                           <a class="btn btn-group btn-outline-light mb-5" href="{{ path('admin_diary') }}">Gestion de l'agenda</a>
+{#                           <a class="btn btn-group btn-outline-light mb-5">Gestion des vidéos</a>#}
+                           <a class="btn btn-group btn-outline-light mb-5" href="{{ path('admin_news') }}">Gestion des actus</a>
+                           {% if is_granted('ROLE_SUPER_ADMIN') %}
+                               <a class="btn btn-group btn-outline-light " href="{{ path('super_admin_users') }}">Gestion des utilisateurs</a>
+                           {% endif %}
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}

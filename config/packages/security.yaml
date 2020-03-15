@@ -2,6 +2,12 @@ security:
     encoders:
         App\Entity\User: bcrypt
 
+    role_hierarchy:
+        ROLE_SUB: [ROLE_USER, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_PRESTA: [ROLE_SUB, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN:  [ROLE_PRESTA, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -33,5 +39,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/sa, roles: ROLE_SUPER_ADMIN }
+         - { path: ^/sub, roles: ROLE_SUB }
+         - { path: ^/show, roles: ROLE_PRESTA }

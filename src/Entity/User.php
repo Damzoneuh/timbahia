@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -42,6 +44,21 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $resetToken;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Profile", inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $profile;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Diary", mappedBy="user")
+     */
+    private $diaries;
+
+    public function __construct()
+    {
+        $this->diaries = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -141,6 +158,46 @@ class User implements UserInterface
     public function setResetToken(?string $resetToken): self
     {
         $this->resetToken = $resetToken;
+
+        return $this;
+    }
+
+    public function getProfile(): ?Profile
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(?Profile $profile): self
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Diary[]
+     */
+    public function getDiaries(): Collection
+    {
+        return $this->diaries;
+    }
+
+    public function addDiary(Diary $diary): self
+    {
+        if (!$this->diaries->contains($diary)) {
+            $this->diaries[] = $diary;
+            $diary->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDiary(Diary $diary): self
+    {
+        if ($this->diaries->contains($diary)) {
+            $this->diaries->removeElement($diary);
+            $diary->removeUser($this);
+        }
 
         return $this;
     }

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Admin-Agenda{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-5">
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center mt-5"><a href="{{ path('admin') }}" class="btn btn-group btn-primary">Retout à l'admin</a> </div>
+            <div class="col mt-5">
+                <div class="text-center mb-5"><a class="btn btn-group btn-success" href="{{ path('admin_create_diary') }}">Créer un nouvel évènement</a> </div>
+                <div class="bg-footer shadow p-5 rounded">
+                    <table class="table table-responsive-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Titre</th>
+                                <th scope="col">date</th>
+                                <th scope="col" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for diary in diaries %}
+                                <tr>
+                                    <td><a href="{{ path('admin_edit_diary', {id: diary.id}) }}" class="text-white link">{{ diary.title }}</a> </td>
+                                    <td class="text-white">{{ diary.date|date('d/m/Y H:i') }}</td>
+                                    <td>
+                                        <div class="text-center">
+                                            <a href="{{ path('admin_publish_diary', {id: diary.id}) }}"
+                                               class="btn btn-group m-auto {{ diary.isPublished ? ' btn-outline-info' : 'btn-outline-success' }}">
+                                                {{ diary.isPublished ? 'Désactiver' : 'Publier' }}
+                                            </a>
+                                            <a href="{{ path('admin_delete_diary', {id: diary.id}) }}" class="m-auto btn btn-group btn-danger">Supprimer</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}

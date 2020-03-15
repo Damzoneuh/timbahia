@@ -4,7 +4,7 @@
 
 {% block body %}
     {{ parent() }}
-    <div class="container-fluid bg-white">
+    <div class="container-fluid bg-white mt-5">
         <div class="row">
             <div class="col-sm-12 col-md-6 offset-md-3">
                 <div class="p-5 rounded shadow bg-light">
@@ -40,6 +40,11 @@
                                     Envoyer
                                 </button>
                             </div>
+                        <div class="text-center">
+                            <a href="{{ path('register') }}" title="créer un compte" class="btn btn-group btn-outline-success mt-5">
+                                Pas encore de compte ?
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>

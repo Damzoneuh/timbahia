@@ -24,12 +24,26 @@ class MailerService
      * @throws Exception
      */
     public function sendRegistrationMail($email, $token){
-        $message = $this->createMessage('noreply@timbahia.fr', $email, 'email/registration.html.twig', ['token' => $token]);
+        $message = $this->createMessage('noreply@timbahia.fr', $email, 'email/registration.html.twig', 'Bienvenue chez Timbahia', ['token' => $token]);
         try {
             $this->_mailer->send($message);
         } catch (TransportExceptionInterface $e) {
             throw new Exception($e);
         }
         return true;
+    }
+
+    /**
+     * @param $target
+     * @param $sender
+     * @param $text
+     * @throws TransportExceptionInterface
+     */
+    public function sendContactMessage($target, $sender, $text){
+        $message = $this->createMessage('contact@timbahia.fr', $target, 'email/contact.html.twig', 'Contact depuis le site', ['content' => [
+            'message' => $text,
+            'email' => $sender
+        ]]);
+        $this->_mailer->send($message);
     }
 }

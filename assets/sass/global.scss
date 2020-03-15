@@ -1,1 +1,55 @@
 @import "~bootstrap/scss/bootstrap";
+
+a{
+  outline: none;
+}
+.w-logo{
+  width: 65px;
+}
+.w-logo-details{
+  width: 150px;
+}
+
+.banner{
+  height: 70vh;
+  background: url("../img/timbahia-1.jpg") no-repeat top fixed;
+  background-size: cover;
+}
+
+.luciano{
+  height: 70vh;
+  background: url("../img/luciano.jpg") no-repeat top fixed;
+  background-size: cover;
+}
+
+.bg-footer{
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+.bg-green{
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(38,172,9,1) 0%, rgba(0,255,14,1) 60%);
+}
+
+.link{
+  cursor: pointer;
+}
+
+.mb-footer{
+  margin-bottom: -16px !important;
+}
+
+.position-logger{
+  top: 65px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.w-thumb{
+  width: 150px;
+}
+
+.m-auto-select > select{
+  margin: auto;
+}

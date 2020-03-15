@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Admin-Agenda{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-5">
+    <div class="row mt-5 mb-5">
+        <div class="col-12 text-center mt-5"><a href="{{ path('admin') }}" class="btn btn-group btn-primary">Retout à l'admin</a> </div>
+        <div class="col-12 mt-5 ">
+            <div class="p-5 bg-footer shadow rounded text-white mb-5">
+                <div class="row">
+                    <div class="col-lg-6 col-12 text-center">
+                        Email : {{ user.email }}
+                    </div>
+                    <div class="col-lg-6 col-12 text-center">
+                        Nom / Prénom : {{ user.profile ? user.profile.name : ''}} {{ user.profile ? user.profile.lastName : ''}}
+                    </div>
+                    <div class="col-lg-6 col-12 text-center">
+                       Surnom : {{ user.profile ? user.profile.nickName : ''}}
+                    </div>
+                    <div class="col-lg-6 col-12 text-center">
+                        Instrument : {% if user.profile is not null %}{{ user.profile.instrument ? user.profile.instrument.name : '' }}{% endif %}
+                    </div>
+                    <div class="col-lg-6 col-12 mt-5">
+                        <h3>Droits actuel : {{ user.roles[0] }}</h3>
+                        {{ form_start(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}
